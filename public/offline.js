@@ -1,12 +1,14 @@
-const request = window.indexedDB.open("toDolist", 1);
+const request = window.indexedDB.open("budget", 1);
 
-request.onupgradeneeded= ({ target }) => {
-  console.log("onupgradeneeded => executed");
-  const db = target.result;
-  const objectStore = db.createObjectStore("toDoList");
+request.onupgradeneeded= ( event ) => {
+  const db = event.target.result;
+  db.createObjectStore("pending", { autoIncremenet: true })
 };
 
 request.onsuccess = event => {
-  console.log("request.onsuccess => executed");
-  console.log(request.result);
-}
+  const db = request.result;
+
+  if (navigator.onLine) {
+    checkDatabase();
+  }
+};
