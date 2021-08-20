@@ -21,12 +21,13 @@ Offline functionality includes entering deposits and expenses while not connecte
 Screenshots:
 
 <h4> Home Screen </h4>
-<img src =''>
-<h4> Charts (the Dashboard) </h4>
-<img src = ''>
+<img src ='./public/readme/home.png'>
 
 
 ## Installation
+
+This application is run via `Node.js` and `Express`.
+
 
 NPM packages required (`npm i` to install all the packages):
 
@@ -47,12 +48,13 @@ Run `node server.js` to start the server.
 ## Usage
 
 <h4> A video demonstration </h4>
-<img src = ''>
+<img src = './public/readme/Budget_Tracker.gif'>
 
+Enter the name of the transactions and their amounts.  Click add funds or subtract funds to record into the database.
 
-Deployed application: [click here.](https://secret-harbor-92178.herokuapp.com/)
+Deployed application: [click here.](https://prog-budget-jtn.herokuapp.com/)
 
-Github repository: [click here.](https://github.com/NguyenJohnnyT/fitness-tracker)
+Github repository: [click here.](https://github.com/NguyenJohnnyT/budget_tracker)
 
 ## License
 
