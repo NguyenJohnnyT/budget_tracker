@@ -2,13 +2,13 @@ let db;
 
 const request = window.indexedDB.open("budget", 1);
 
-request.onupgradeneeded= ( event ) => {
+request.onupgradeneeded = ( event ) => {
   const db = event.target.result;
   db.createObjectStore("pending", { autoIncrement: true })
 };
 
 request.onsuccess = event => {
-  db = event.request.result;
+  db = event.target.result;
 
   if (navigator.onLine) {
     checkDatabase();
@@ -27,9 +27,9 @@ function saveRecord(record) {
   store.onupgradeneeded(record);
 }
 
-function checkDataBase() {
+function checkDatabase() {
   const transaction = db.transaction(["pending"], "readwrite");
-  const store = transaction.createObjectStore("pending");
+  const store = transaction.objectStore("pending");
   const getAll = store.getAll();
 
   getAll.onsuccess = async function () {
@@ -58,4 +58,4 @@ function checkDataBase() {
   }
 }
 
-window.addEventListener('online', checkDataBase);
+window.addEventListener('online', checkDatabase);
