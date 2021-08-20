@@ -22,9 +22,9 @@ request.onerror = function (event) {
 function saveRecord(record) {
   const transaction = db.transaction(['pending'], 'readwrite');
 
-  const store = transaction.createObjectStore('pending');
+  const store = transaction.objectStore('pending');
 
-  store.onupgradeneeded(record);
+  store.add(record);
 }
 
 function checkDatabase() {
@@ -47,8 +47,8 @@ function checkDatabase() {
         const json = await response.json()
 
         if (json) {
-          const transaction = dbtransaction(['pending'], 'readwrite');
-          const store = transaction.createObjectStore('pending');
+          const transaction = db.transaction(['pending'], 'readwrite');
+          const store = transaction.objectStore('pending');
           store.clear();
         }
       } catch (err) {
